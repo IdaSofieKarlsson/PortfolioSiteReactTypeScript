@@ -39,15 +39,6 @@ function WeatherItemMain() {
         return directions[index];
         }
 
-    // Example usage inside a component
-    function WindDirection({ windDeg }: { windDeg: number }) {
-        return (
-            <div>
-            Wind: {windDeg}° ({degToCompass(windDeg)})
-            </div>
-        );
-    }
-
     function weatherCodeToText(code: number): string {
         const weatherMap: Record<number, string> = {
             0: "Clear sky",
@@ -82,7 +73,11 @@ function WeatherItemMain() {
 
         return weatherMap[code] ?? "Unknown weather code";
     };
-
+    //somehow this doesn't work in react, may fix. Or skip sunrise/set
+    function getTimeFromISO(isoString: string): string {
+        
+        return isoString.split("T")[1]; // "19:21"
+    };
 
 
     return (
@@ -99,7 +94,7 @@ function WeatherItemMain() {
                             Perceived temperature: {weather.current.apparent_temperature} {weather.current_units.apparent_temperature} <br></br>
                             Wind speed: {weather.current.wind_speed_10m} {weather.current_units.wind_speed_10m} <br></br>
                             Wind direction: {weather.current.wind_direction_10m} {weather.current_units.wind_direction_10m} {degToCompass(weather.current.wind_direction_10m)}<br></br>
-                            The sun will rise at    and go down at   .
+                            {/* The sun will rise at {getTimeFromISO(weather.daily.sunrise)} and go down at {getTimeFromISO(weather.daily.sunset)}*/}
                         </h1>
                         
                     )}
