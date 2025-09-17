@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import CraftForSale from "./Components/CraftForSale";
+//import CraftForSale from "./Components/CraftForSale";
 import WeatherItemDetail from "./Components/weatherDetail";
 import WeatherItemMain from "./Components/weatherItemMain";
 
